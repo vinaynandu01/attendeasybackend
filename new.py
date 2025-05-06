@@ -24,7 +24,7 @@ detector = MTCNN()
 embedder = FaceNet()
 
 # Configure MongoDB
-app.config["MONGO_URI"] = "mongodb://localhost:27017/facedb" #config setting
+app.config["MONGO_URI"] = "mongodb+srv://nanduvinay719:76qqKRX4zC97yQun@travis.744fuyn.mongodb.net/?retryWrites=true&w=majority&appName=travis" #config setting
 # Update with your MongoDB URI
 mongo = PyMongo(app)#initialize
 haar_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -386,6 +386,3 @@ def get_attendance():
     records = list(mongo.db.attendance1.find({}, {"_id": 0}))
     return jsonify({"attendance": records})
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
